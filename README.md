@@ -9,7 +9,7 @@
 * **Profesor:** Rodrigo Ojeda Santillán
 * **Integrantes del equipo:**
   * Israel Márquez Cárdenas (2022300395)
-  * Alumno 2 (Boleta)
+  * Esaul Tellez de la Cruz (2023630692)
   * Alumno 3 (Boleta)
 
 ---
@@ -23,8 +23,8 @@ A continuación se detallan las cuentas configuradas en las plataformas de nube 
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Israel Márquez | AWS | 438456518128 | Cuenta de AWS | Sí (mx-central-1) | $120.00 USD (1 año) | israelisipo@gmail.com |
 | Israel Márquez | Azure | 87d70be2-e280-4fac-81bb-8e620dc4b7ba | Suscripción (Azure for Students) | Sí (Mexico Central) | $100.00 USD (1 año) | israelisipo@gmail.com |
-| Alumno 2 | AWS | 9876-5432-1098 | Cuenta de AWS | Sí (mx-central-1) | $200.00 USD (6 meses) | correo2@ejemplo.com |
-| Alumno 2 | Azure | 11111111-1111-1111-1111-111111111111 | Suscripción (Azure for Students) | Sí (Mexico Central) | $100.00 USD (12 meses) | correo2@ejemplo.com |
+| Esaul Tellez de la Cruz | AWS | 528724997695| Cuenta de AWS | Sí (mx-central-1) | $100.00 USD (6 meses) | etellezd1900@alumno.ipn.mx |
+| Esaul Tellez de la Cruz | Azure | 1aaa6fc3-e0a8-48b4-b67b-63db395edde7 | Suscripción (Azure for Students) | Sí (Mexico Central) | $100.00 USD (12 meses) | etellezd1900@alumno.ipn.mx |
 | Alumno 3 | AWS | 9876-5432-1098 | Cuenta de AWS | Sí (mx-central-1) | $200.00 USD (6 meses) | correo3@ejemplo.com |
 | Alumno 3 | Azure | 11111111-1111-1111-1111-111111111111 | Suscripción (Azure for Students) | Sí (Mexico Central) | $100.00 USD (12 meses) | correo3@ejemplo.com |
 
@@ -136,14 +136,14 @@ Se estimó la arquitectura de referencia compuesta por:
 
 | Recurso | Unidad de cobro | Cantidad | Subtotal México (`mx-central-1`) | Subtotal EE. UU. (`us-east-1`) | ¿Capa gratuita? |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| VM (EC2 `t3.medium` + 30 GB EBS gp3) | Instancia-hora + GB-mes | 730 h / 30 GB | $34.50 USD | $30.36 USD | No (supera t2/t3.micro) |
-| BD gestionada (RDS PostgreSQL `db.t3.micro`) | Instancia-hora + GB-mes | 730 h / 20 GB | $19.80 USD | $17.50 USD | No (por horas/disco adicional) |
-| Almacenamiento de objetos (Amazon S3 Standard) | GB-mes + Peticiones PUT/GET | 50 GB / 100k req | $1.35 USD | $1.20 USD | Parcial (primeros 5 GB) |
-| Balanceador de aplicación (ALB) | Horas de balanceador + LCU | 730 h / 1 LCU | $21.50 USD | $19.20 USD | No |
-| Salida a internet (*Data Egress*) | GB transferido | 100 GB | $10.80 USD | $9.00 USD | Parcial (primeros 100 GB) |
-| **Total mensual** | | | **$87.95 USD** | **$77.26 USD** | |
-| **Total anual** | | | **$1,055.40 USD** | **$927.12 USD** | |
-| **Diferencia porcentual** | | | **+13.84% en México** | Base comparativa | |
+| VM (EC2 `t4g.small` + 30 GB EBS gp2) | Instancia-hora + GB-mes | 730 h / 30 GB | $16.00 USD | $15.26 USD | Sí (primeros meses/créditos) |
+| BD gestionada (RDS PostgreSQL `db.t4g.micro`) | Instancia-hora + GB-mes | 730 h / 20 GB | $14.83 USD | $13.98 USD | Sí (750h `db.t4g.micro`) |
+| Almacenamiento de objetos (Amazon S3 Standard) | GB-mes + Peticiones | 50 GB / 100k req | $1.73 USD | $1.73 USD | Parcial (primeros 5 GB) |
+| Balanceador de aplicación (ALB) | Horas de balanceador + LCU | 730 h / 1 LCU | $17.50 USD | $16.66 USD | No |
+| Salida a internet (*Data Egress*) | GB transferido | 100 GB | $9.00 USD | $9.00 USD | Parcial (primeros 100 GB) |
+| **Total mensual** | | | **$59.06 USD** | **$56.63 USD** | |
+| **Total anual** | | | **$708.72 USD** | **$679.56 USD** | |
+| **Diferencia porcentual** | | | **+4.29% en México** | Base comparativa | |
 
 ### Tabla 2.2 Estimación en Microsoft Azure
 *Archivos exportados disponibles en `evidencias/P01/costos/Azure_Mexico_Estimate.pdf` y `Azure_USEast_Estimate.pdf`.*
@@ -243,6 +243,7 @@ Se auditó la infraestructura en todas las regiones para garantizar que no exist
 Conviene utilizar una cuenta central compartida administrada bajo un esquema de organización (como AWS Organizations o grupos de recursos en Azure con control de acceso RBAC), o bien mantener cuentas individuales para experimentación aislada y una sola cuenta oficial para el proyecto. Tener una sola cuenta compartida con una única credencial raíz expone al equipo a un riesgo crítico de seguridad: si un integrante filtra la clave o sube accidentalmente las credenciales a GitHub, todo el entorno y la tarjeta asociada quedan comprometidos. Por otro lado, tener cuentas totalmente separadas sin supervisión fragmenta los presupuestos y complica el monitoreo del gasto acumulado. La mejor práctica observada consiste en delegar privilegios mínimos a cada integrante mediante identidades federadas (IAM/Entra ID) manteniendo un presupuesto consolidado y centralizado con alertas activas.
 
 ### 2. ¿Cuánto más cara resultó la región de México respecto a la de Estados Unidos y en qué recurso está la mayor diferencia? ¿Cuándo elegirías México de todos modos?
+La región de México (`mx-central-1`) resultó ser un **4.29% más cara** que la región de EE. UU. Este (`us-east-1`), representando una diferencia anual de $29.16 USD ($708.72 USD en MX vs $679.56 USD en EE. UU.). La mayor diferencia de costo se encuentra en los servicios de cómputo y balanceo de carga (EC2 resulta $0.59 USD más caro y el Balanceador de Carga ALB resulta $0.84 USD más caro en México debido a los costos operativos locales de infraestructura). Elegiría la región de México a pesar del costo superior cuando los requisitos del sistema exigan una **latencia mínima (menor a 15-20 ms)** para usuarios locales finales o por cumplimiento regulatorio estricto de la **LFPDPPP (Ley Federal de Protección de Datos Personales en Posesión de los Particulares)**, donde la soberanía y residencia física de los datos dentro del territorio nacional sea un requisito legal o bancario ineludible.
 
 
 ### 3. ¿Qué recursos de la arquitectura de referencia seguirían cobrando aunque apagaras la máquina virtual?
@@ -303,6 +304,6 @@ La realización de esta práctica permitió comprender que la administración de
 
 | Sección | Responsable | Entregables Principales | Aportación |
 | :--- | :--- | :--- | :--- |
-| *(Costos y Calculadoras)* | [Nombre de Persona A] | • Estimar la arquitectura de referencia en la calculadora del Proveedor A (AWS) y Proveedor B (Azure) (México vs. EE. UU. = 4 estimaciones).<br>• Realizar la estimación preliminar del proyecto del equipo.<br>• Llenar la Tabla 2 del reporte y exportar los archivos a `evidencias/P01/costos/`.<br>• Redactar respuestas a las Preguntas 2 y 3 (comparativa México vs. EE. UU. y costos ocultos si se apaga la VM). | 33.3% |
+| *(Costos y Calculadoras)* | Esaul Tellez de la Cruz | • Estimar la arquitectura de referencia en la calculadora del Proveedor A (AWS) y Proveedor B (Azure) (México vs. EE. UU. = 4 estimaciones).<br>• Realizar la estimación preliminar del proyecto del equipo.<br>• Llenar la Tabla 2 del reporte y exportar los archivos a `evidencias/P01/costos/`.<br>• Redactar respuestas a las Preguntas 2 y 3 (comparativa México vs. EE. UU. y costos ocultos si se apaga la VM). | 33.3% |
 | *(Modelos de Servicio e IA)* | [Nombre de Persona B] | • Realizar la exploración de B1 en el Proveedor A (AWS) y Proveedor B (Azure) (los 14 servicios: IaaS, PaaS, FaaS, contenedores, BD, objetos, IA) sin crear recursos.<br>• Investigar el ejemplo de SaaS (precios y justificación).<br>• Llenar la Tabla 3 del reporte con unidades de cobro y disponibilidad en Querétaro/México.<br>• Redactar respuesta a la Pregunta 4 (modelo ideal para el proyecto). | 33.3% |
 | *(NIST, Seguridad y Repositorio)* | Israel Márquez Cárdenas | • Obtener las capturas y redacción de B2: las 5 características del NIST en consola/CLI.<br>• Coordinar B3: revisión de inventario en cero, saldo de créditos y auditoría de seguridad (verificar que ninguna captura muestre llaves o credenciales).<br>• Estructurar el archivo `practicas/P01/README.md`, consolidar la Tabla 1 y redactar las bitácoras (`2026-09-01.md` y `2026-09-08.md`). | 33.4% |
