@@ -31,20 +31,42 @@ A continuación se detallan las cuentas configuradas en las plataformas de nube 
 ### Evidencias de la Fase 1 (Actividad A1: Reconocimiento de consola y facturación)
 
 #### Amazon Web Services (AWS)
-* **Identificador de cuenta:**
-  ![A1 AWS ID](evidencias/P01/P01_A1_aws_israel_1.png)
-* **Región México (Querétaro `mx-central-1`):**
-  ![A1 AWS Región](evidencias/P01/P01_A1_aws_israel_2.png)
-* **Facturación actual ($0.00 USD) y saldo de créditos:**
-  ![A1 AWS Créditos](evidencias/P01/P01_A1_aws_israel_3.png)
+
+**1. Identificador de cuenta (12 dígitos):**
+
+![A1 AWS ID](evidencias/P01/P01_A1_aws_israel_1.png)
+
+<br>
+
+**2. Región México (Querétaro `mx-central-1`):**
+
+![A1 AWS Región](evidencias/P01/P01_A1_aws_israel_2.png)
+
+<br>
+
+**3. Facturación actual ($0.00 USD) y saldo de créditos:**
+
+![A1 AWS Créditos](evidencias/P01/P01_A1_aws_israel_3.png)
+
+<br>
 
 #### Microsoft Azure
-* **Identificador de suscripción (Azure for Students):**
-  ![A1 Azure ID](evidencias/P01/P01_A1_azure_israel_1.png)
-* **Región México (`Mexico Central`):**
-  ![A1 Azure Región](evidencias/P01/P01_A1_azure_israel_2.png)
-* **Facturación actual ($0.00 USD) y créditos educativos:**
-  ![A1 Azure Créditos](evidencias/P01/P01_A1_azure_israel_3.png)
+
+**1. Identificador de suscripción (Azure for Students):**
+
+![A1 Azure ID](evidencias/P01/P01_A1_azure_israel_1.png)
+
+<br>
+
+**2. Región México (`Mexico Central`):**
+
+![A1 Azure Región](evidencias/P01/P01_A1_azure_israel_2.png)
+
+<br>
+
+**3. Facturación actual ($0.00 USD) y créditos educativos:**
+
+![A1 Azure Créditos](evidencias/P01/P01_A1_azure_israel_3.png)
 
 ---
 
@@ -61,20 +83,42 @@ Se establecieron los presupuestos obligatorios y umbrales preventivos en ambos p
 ### Evidencias de Presupuestos y Alertas
 
 #### Amazon Web Services (AWS)
-* **Lista de presupuestos con gasto actual en $0.00 USD:**
-  ![A2 AWS Presupuestos](evidencias/P01/P01_A2_aws_israel_1.png)
-* **Detalle del presupuesto de 5 USD con los 4 umbrales y correo:**
-  ![A2 AWS Umbrales](evidencias/P01/P01_A2_aws_israel_2.png)
-* **Evidencia viva de monitoreo continuo (Estado OK):**
-  ![A2 AWS Estado OK](evidencias/P01/P01_A2_aws_israel_3.png)
+
+**1. Lista de presupuestos con gasto actual en $0.00 USD:**
+
+![A2 AWS Presupuestos](evidencias/P01/P01_A2_aws_israel_1.png)
+
+<br>
+
+**2. Detalle del presupuesto de 5 USD con los 4 umbrales y correo:**
+
+![A2 AWS Umbrales](evidencias/P01/P01_A2_aws_israel_2.png)
+
+<br>
+
+**3. Evidencia viva de monitoreo continuo (Estado OK):**
+
+![A2 AWS Estado OK](evidencias/P01/P01_A2_aws_israel_3.png)
+
+<br>
 
 #### Microsoft Azure
-* **Lista de presupuestos con costo actual en $0.00 USD:**
-  ![A2 Azure Presupuestos](evidencias/P01/P01_A2_azure_israel_1.png)
-* **Detalle del presupuesto con los 4 umbrales:**
-  ![A2 Azure Umbrales](evidencias/P01/P01_A2_azure_israel_2.png)
-* **Evidencia viva de monitoreo continuo en Cost Management:**
-  ![A2 Azure Estado OK](evidencias/P01/P01_A2_azure_israel_3.png)
+
+**1. Lista de presupuestos con costo actual en $0.00 USD:**
+
+![A2 Azure Presupuestos](evidencias/P01/P01_A2_azure_israel_1.png)
+
+<br>
+
+**2. Detalle del presupuesto con los 4 umbrales:**
+
+![A2 Azure Umbrales](evidencias/P01/P01_A2_azure_israel_2.png)
+
+<br>
+
+**3. Evidencia viva de monitoreo continuo en Cost Management:**
+
+![A2 Azure Estado OK](evidencias/P01/P01_A2_azure_israel_3.png)
 
 ---
 
@@ -88,10 +132,34 @@ Se estimó la arquitectura de referencia compuesta por:
 * 100 GB de tráfico de salida (*egress*) a internet al mes.
 
 ### Tabla 2.1 Estimación en Amazon Web Services (AWS)
+*Archivos exportados disponibles en `evidencias/P01/costos/AWS_Mexico_Estimate.pdf` y `AWS_USEast_Estimate.pdf`.*
 
+| Recurso | Unidad de cobro | Cantidad | Subtotal México (`mx-central-1`) | Subtotal EE. UU. (`us-east-1`) | ¿Capa gratuita? |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| VM (EC2 `t3.medium` + 30 GB EBS gp3) | Instancia-hora + GB-mes | 730 h / 30 GB | $34.50 USD | $30.36 USD | No (supera t2/t3.micro) |
+| BD gestionada (RDS PostgreSQL `db.t3.micro`) | Instancia-hora + GB-mes | 730 h / 20 GB | $19.80 USD | $17.50 USD | No (por horas/disco adicional) |
+| Almacenamiento de objetos (Amazon S3 Standard) | GB-mes + Peticiones PUT/GET | 50 GB / 100k req | $1.35 USD | $1.20 USD | Parcial (primeros 5 GB) |
+| Balanceador de aplicación (ALB) | Horas de balanceador + LCU | 730 h / 1 LCU | $21.50 USD | $19.20 USD | No |
+| Salida a internet (*Data Egress*) | GB transferido | 100 GB | $10.80 USD | $9.00 USD | Parcial (primeros 100 GB) |
+| **Total mensual** | | | **$87.95 USD** | **$77.26 USD** | |
+| **Total anual** | | | **$1,055.40 USD** | **$927.12 USD** | |
+| **Diferencia porcentual** | | | **+13.84% en México** | Base comparativa | |
 
 ### Tabla 2.2 Estimación en Microsoft Azure
+*Archivos exportados disponibles en `evidencias/P01/costos/Azure_Mexico_Estimate.pdf` y `Azure_USEast_Estimate.pdf`.*
 
+| Recurso | Unidad de cobro | Cantidad | Subtotal México (`Mexico Central`) | Subtotal EE. UU. (`East US`) | ¿Capa gratuita? |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| VM (B2s: 2 vCPU, 4 GB + 32 GB SSD) | Instancia-hora + GB-mes | 730 h / 32 GB | $38.20 USD | $33.58 USD | No |
+| BD gestionada (Azure Database for PostgreSQL) | Instancia-hora + GB-mes | 730 h / 20 GB | $22.10 USD | $19.50 USD | No |
+| Almacenamiento de objetos (Azure Blob Storage Hot) | GB-mes + Operaciones | 50 GB / 100k ops | $1.25 USD | $1.05 USD | Parcial (primeros 5 GB) |
+| Application Gateway (v2) | Horas de gateway + Unidades | 730 h | $26.40 USD | $23.20 USD | No |
+| Salida de datos (*Egress*) | GB transferido | 100 GB | $11.00 USD | $8.70 USD | Parcial (primeros 100 GB) |
+| **Total mensual** | | | **$98.95 USD** | **$86.03 USD** | |
+| **Total anual** | | | **$1,187.40 USD** | **$1,032.36 USD** | |
+| **Diferencia porcentual** | | | **+15.02% en México** | Base comparativa | |
+
+---
 
 ## 4. Características esenciales del NIST comprobadas en la consola (Actividad B2)
 
@@ -102,20 +170,28 @@ El aprovisionamiento de capacidad de cómputo y almacenamiento se realiza de for
 
 ![Captura B2.1 - Autoservicio bajo demanda](evidencias/P01/P01_B2_nist_ondemand.png)
 
+<br>
+
 ### 2. Amplio acceso a la red (*Broad network access*)
 Las capacidades y servicios del proveedor están disponibles a través de la red y pueden operarse mediante mecanismos e interfaces estándar independientemente de la plataforma o dispositivo del cliente. Se comprobó accediendo a través de AWS CloudShell mediante el comando `aws sts get-caller-identity`.
 
 ![Captura B2.2 - Amplio acceso a la red](evidencias/P01/P01_B2_nist_broadaccess.png)
+
+<br>
 
 ### 3. Agrupación de recursos (*Resource pooling*)
 Los recursos físicos de hardware están agrupados para atender de manera multi-inquilino a múltiples clientes, asignándose dinámicamente según la demanda. El usuario desconoce la ubicación exacta del silicio o bastidor físico, visualizando abstracciones lógicas como zonas de disponibilidad en Querétaro (`mx-central-1a` y `mx-central-1b`).
 
 ![Captura B2.3 - Agrupación de recursos](evidencias/P01/P01_B2_nist_pooling.png)
 
+<br>
+
 ### 4. Elasticidad rápida (*Rapid elasticity*)
 Las capacidades de cómputo pueden aprovisionarse y liberarse de manera elástica y automática para escalar hacia afuera o hacia arriba según la demanda operativa. En la consola se evidencia mediante la parametrización de capacidades mínimas, deseadas y máximas en un grupo de autoescalado (*Auto Scaling Group*).
 
 ![Captura B2.4 - Elasticidad rápida](evidencias/P01/P01_B2_nist_elasticity.png)
+
+<br>
 
 ### 5. Servicio medido (*Measured service*)
 El consumo de recursos se monitorea, controla y mide de forma cuantitativa y transparente mediante métricas específicas (horas de ejecución, GB almacenados por mes y volumen de peticiones API). Esto sustenta el modelo de pago por uso (*pay-per-use*) y permite el control de costos mediante paneles de facturación y presupuestos.
@@ -132,14 +208,32 @@ Se auditó la infraestructura en todas las regiones para garantizar que no exist
 * **Inventario en Azure (Todos los recursos):** Reporta 0 recursos desplegados en la suscripción de estudiantes.
 
 ### Evidencias de Inventario y Saldo en Cero
-* **Inventario de recursos en AWS:**
-  ![B3 AWS Recursos](evidencias/P01/P01_B3_aws_israel_1.png)
-* **Gasto facturado en AWS ($0.00 USD):**
-  ![B3 AWS Facturación 0](evidencias/P01/P01_B3_aws_israel_2.png)
-* **Inventario de recursos en Azure:**
-  ![B3 Azure Recursos](evidencias/P01/P01_B3_azure_israel_1.png)
-* **Gasto facturado en Azure ($0.00 USD):**
-  ![B3 Azure Facturación 0](evidencias/P01/P01_B3_azure_israel_2.png)
+
+#### Amazon Web Services (AWS)
+
+**1. Inventario de recursos en AWS:**
+
+![B3 AWS Recursos](evidencias/P01/P01_B3_aws_israel_1.png)
+
+<br>
+
+**2. Gasto facturado en AWS ($0.00 USD):**
+
+![B3 AWS Facturación 0](evidencias/P01/P01_B3_aws_israel_2.png)
+
+<br>
+
+#### Microsoft Azure
+
+**1. Inventario de recursos en Azure:**
+
+![B3 Azure Recursos](evidencias/P01/P01_B3_azure_israel_1.png)
+
+<br>
+
+**2. Gasto facturado en Azure ($0.00 USD):**
+
+![B3 Azure Facturación 0](evidencias/P01/P01_B3_azure_israel_2.png)
 
 ---
 
@@ -201,7 +295,7 @@ La realización de esta práctica permitió comprender que la administración de
 
 ## 9. Sección obligatoria: «Uso de IA»
 * **Herramienta utilizada:** Gemini (Google)
-* **Finalidad y alcance del apoyo:** Se utilizó como asistente interactivo para estructurar la plantilla del reporte en formato Markdown, guía para la configuración de alertas/presupuestos y resolver dudas de autenticación en las consolas de AWS y Azure. Todo el contenido, capturas y cifras fueron verificados y validados manualmente por nosotros.
+* **Finalidad y alcance del apoyo:** Se utilizó como asistente para estructurar la plantilla del reporte en formato Markdown, guía para la configuración de alertas/presupuestos y resolver dudas de autenticación en las consolas de AWS y Azure. Capturas y cifras fueron verificados y validados manualmente por nosotros.
 
 ---
 
