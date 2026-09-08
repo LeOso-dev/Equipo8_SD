@@ -32,19 +32,19 @@ A continuación se detallan las cuentas configuradas en las plataformas de nube 
 
 #### Amazon Web Services (AWS)
 * **Identificador de cuenta:**
-  ![A1 AWS ID](../../evidencias/P01/P01_A1_aws_israel_1.png)
+  ![A1 AWS ID](evidencias/P01/P01_A1_aws_israel_1.png)
 * **Región México (Querétaro `mx-central-1`):**
-  ![A1 AWS Región](../../evidencias/P01/P01_A1_aws_israel_2.png)
+  ![A1 AWS Región](evidencias/P01/P01_A1_aws_israel_2.png)
 * **Facturación actual ($0.00 USD) y saldo de créditos:**
-  ![A1 AWS Créditos](../../evidencias/P01/P01_A1_aws_israel_3.png)
+  ![A1 AWS Créditos](evidencias/P01/P01_A1_aws_israel_3.png)
 
 #### Microsoft Azure
 * **Identificador de suscripción (Azure for Students):**
-  ![A1 Azure ID](../../evidencias/P01/P01_A1_azure_israel_1.png)
+  ![A1 Azure ID](evidencias/P01/P01_A1_azure_israel_1.png)
 * **Región México (`Mexico Central`):**
-  ![A1 Azure Región](../../evidencias/P01/P01_A1_azure_israel_2.png)
+  ![A1 Azure Región](evidencias/P01/P01_A1_azure_israel_2.png)
 * **Facturación actual ($0.00 USD) y créditos educativos:**
-  ![A1 Azure Créditos](../../evidencias/P01/P01_A1_azure_israel_3.png)
+  ![A1 Azure Créditos](evidencias/P01/P01_A1_azure_israel_3.png)
 
 ---
 
@@ -62,19 +62,19 @@ Se establecieron los presupuestos obligatorios y umbrales preventivos en ambos p
 
 #### Amazon Web Services (AWS)
 * **Lista de presupuestos con gasto actual en $0.00 USD:**
-  ![A2 AWS Presupuestos](../../evidencias/P01/P01_A2_aws_israel_1.png)
+  ![A2 AWS Presupuestos](evidencias/P01/P01_A2_aws_israel_1.png)
 * **Detalle del presupuesto de 5 USD con los 4 umbrales y correo:**
-  ![A2 AWS Umbrales](../../evidencias/P01/P01_A2_aws_israel_2.png)
+  ![A2 AWS Umbrales](evidencias/P01/P01_A2_aws_israel_2.png)
 * **Evidencia viva de monitoreo continuo (Estado OK):**
-  ![A2 AWS Estado OK](../../evidencias/P01/P01_A2_aws_israel_3.png)
+  ![A2 AWS Estado OK](evidencias/P01/P01_A2_aws_israel_3.png)
 
 #### Microsoft Azure
 * **Lista de presupuestos con costo actual en $0.00 USD:**
-  ![A2 Azure Presupuestos](../../evidencias/P01/P01_A2_azure_israel_1.png)
+  ![A2 Azure Presupuestos](evidencias/P01/P01_A2_azure_israel_1.png)
 * **Detalle del presupuesto con los 4 umbrales:**
-  ![A2 Azure Umbrales](../../evidencias/P01/P01_A2_azure_israel_2.png)
+  ![A2 Azure Umbrales](evidencias/P01/P01_A2_azure_israel_2.png)
 * **Evidencia viva de monitoreo continuo en Cost Management:**
-  ![A2 Azure Estado OK](../../evidencias/P01/P01_A2_azure_israel_3.png)
+  ![A2 Azure Estado OK](evidencias/P01/P01_A2_azure_israel_3.png)
 
 ---
 
@@ -100,27 +100,27 @@ A continuación se evidencian las 5 características esenciales definidas por NI
 ### 1. Autoservicio bajo demanda (*On-demand self-service*)
 El aprovisionamiento de capacidad de cómputo y almacenamiento se realiza de forma totalmente autónoma mediante la consola web sin interacción humana con personal del proveedor de nube. El cliente configura y lanza los recursos de manera inmediata y automatizada.
 
-![Captura B2.1 - Autoservicio bajo demanda](../../evidencias/P01/P01_B2_nist_ondemand.png)
+![Captura B2.1 - Autoservicio bajo demanda](evidencias/P01/P01_B2_nist_ondemand.png)
 
 ### 2. Amplio acceso a la red (*Broad network access*)
 Las capacidades y servicios del proveedor están disponibles a través de la red y pueden operarse mediante mecanismos e interfaces estándar independientemente de la plataforma o dispositivo del cliente. Se comprobó accediendo a través de AWS CloudShell mediante el comando `aws sts get-caller-identity`.
 
-![Captura B2.2 - Amplio acceso a la red](../../evidencias/P01/P01_B2_nist_broadaccess.png)
+![Captura B2.2 - Amplio acceso a la red](evidencias/P01/P01_B2_nist_broadaccess.png)
 
 ### 3. Agrupación de recursos (*Resource pooling*)
 Los recursos físicos de hardware están agrupados para atender de manera multi-inquilino a múltiples clientes, asignándose dinámicamente según la demanda. El usuario desconoce la ubicación exacta del silicio o bastidor físico, visualizando abstracciones lógicas como zonas de disponibilidad en Querétaro (`mx-central-1a` y `mx-central-1b`).
 
-![Captura B2.3 - Agrupación de recursos](../../evidencias/P01/P01_B2_nist_pooling.png)
+![Captura B2.3 - Agrupación de recursos](evidencias/P01/P01_B2_nist_pooling.png)
 
 ### 4. Elasticidad rápida (*Rapid elasticity*)
 Las capacidades de cómputo pueden aprovisionarse y liberarse de manera elástica y automática para escalar hacia afuera o hacia arriba según la demanda operativa. En la consola se evidencia mediante la parametrización de capacidades mínimas, deseadas y máximas en un grupo de autoescalado (*Auto Scaling Group*).
 
-![Captura B2.4 - Elasticidad rápida](../../evidencias/P01/P01_B2_nist_elasticity.png)
+![Captura B2.4 - Elasticidad rápida](evidencias/P01/P01_B2_nist_elasticity.png)
 
 ### 5. Servicio medido (*Measured service*)
 El consumo de recursos se monitorea, controla y mide de forma cuantitativa y transparente mediante métricas específicas (horas de ejecución, GB almacenados por mes y volumen de peticiones API). Esto sustenta el modelo de pago por uso (*pay-per-use*) y permite el control de costos mediante paneles de facturación y presupuestos.
 
-![Captura B2.5 - Servicio medido](../../evidencias/P01/P01_B2_nist_measured.png)
+![Captura B2.5 - Servicio medido](evidencias/P01/P01_B2_nist_measured.png)
 
 ---
 
@@ -133,13 +133,13 @@ Se auditó la infraestructura en todas las regiones para garantizar que no exist
 
 ### Evidencias de Inventario y Saldo en Cero
 * **Inventario de recursos en AWS:**
-  ![B3 AWS Recursos](../../evidencias/P01/P01_B3_aws_israel_1.png)
+  ![B3 AWS Recursos](evidencias/P01/P01_B3_aws_israel_1.png)
 * **Gasto facturado en AWS ($0.00 USD):**
-  ![B3 AWS Facturación 0](../../evidencias/P01/P01_B3_aws_israel_2.png)
+  ![B3 AWS Facturación 0](evidencias/P01/P01_B3_aws_israel_2.png)
 * **Inventario de recursos en Azure:**
-  ![B3 Azure Recursos](../../evidencias/P01/P01_B3_azure_israel_1.png)
+  ![B3 Azure Recursos](evidencias/P01/P01_B3_azure_israel_1.png)
 * **Gasto facturado en Azure ($0.00 USD):**
-  ![B3 Azure Facturación 0](../../evidencias/P01/P01_B3_azure_israel_2.png)
+  ![B3 Azure Facturación 0](evidencias/P01/P01_B3_azure_israel_2.png)
 
 ---
 
